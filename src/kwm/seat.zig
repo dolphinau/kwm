@@ -726,6 +726,11 @@ fn handle_actions(self: *Self) void {
                     output.switch_to_previous_layout();
                 }
             },
+            .cycle_layout => {
+                if (ctx.current_output) |output| {
+                    output.cycle_layout();
+                }
+            },
             .toggle_bar => {
                 if (comptime build_options.bar_enabled) {
                     if (ctx.current_output) |output| {
