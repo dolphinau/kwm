@@ -20,6 +20,18 @@ pub const Type = enum {
             Type.float => Type.tile,
         };
     }
+
+    pub fn previous(self: Type) Type {
+        return switch(self) {
+            Type.tile => Type.float,
+            Type.grid => Type.tile,
+            Type.monocle => Type.grid,
+            Type.deck => Type.monocle,
+            Type.scroller => Type.deck,
+            Type.centered_master => Type.scroller,
+            Type.float => Type.centered_master,
+        };
+    }
 };
 
 pub const Tile = @import("layout/tile.zig");
